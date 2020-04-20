@@ -1,8 +1,11 @@
-let Account = function (log) {
+let Account = function (log, transaction) {
   this._log = log || new Log();
+  this._transaction = transaction || new Transaction();
 };
 
-Account.prototype.withdraw = function () {};
+Account.prototype.withdraw = function () {
+  this._transaction.withdrawal();
+};
 
 Account.prototype.deposit = function () {};
 
