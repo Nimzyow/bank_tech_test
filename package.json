@@ -1,0 +1,17 @@
+{
+  "name": "bank_tech_test",
+  "version": "1.0.0",
+  "description": "makers bank tech test",
+  "main": "index.js",
+  "scripts": {
+    "test": "karma start"
+  },
+  "author": "Nima Soufiani",
+  "license": "ISC",
+  "devDependencies": {
+    "jasmine-core": "^3.5.0",
+    "karma": "^5.0.2",
+    "karma-jasmine": "^3.1.1",
+    "karma-jasmine-matchers": "^4.0.2"
+  }
+}
