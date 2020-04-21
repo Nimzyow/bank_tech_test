@@ -23,7 +23,7 @@ describe("Statement.js", () => {
       const history = [{ credit: 1000, date: dateConverted, balance: 1000 }];
       expect(statement.print(history)).toEqual(
         "\nDate\t\t||\t\tCredit\t\t||\t\tDebit\t\t||\t\tBalance\t\t\n" +
-          "2020-2-3\t||\t\t1000.00\t\t||\t\t\t\t||\t\t1000.00\n"
+          "2020-2-3\t||\t\t1000.00\t\t||\t\t\t\t\t||\t\t1000.00\n"
       );
     });
     it("prints entry of 2 logs from credit correctly", () => {
@@ -35,8 +35,8 @@ describe("Statement.js", () => {
       ];
       expect(statement.print(history)).toEqual(
         "\nDate\t\t||\t\tCredit\t\t||\t\tDebit\t\t||\t\tBalance\t\t\n" +
-          "2020-2-4\t||\t\t1000.00\t\t||\t\t\t\t||\t\t4000.00\n" +
-          "2020-2-3\t||\t\t2000.00\t\t||\t\t\t\t||\t\t3000.00\n"
+          "2020-2-4\t||\t\t1000.00\t\t||\t\t\t\t\t||\t\t4000.00\n" +
+          "2020-2-3\t||\t\t2000.00\t\t||\t\t\t\t\t||\t\t3000.00\n"
       );
     });
 
@@ -51,9 +51,9 @@ describe("Statement.js", () => {
       ];
       expect(statement.print(history)).toEqual(
         "\nDate\t\t||\t\tCredit\t\t||\t\tDebit\t\t||\t\tBalance\t\t\n" +
-          "2020-2-5\t||\t\t\t\t||\t\t1000.00\t\t||\t\t3000.00\n" +
-          "2020-2-4\t||\t\t1000.00\t\t||\t\t\t\t||\t\t4000.00\n" +
-          "2020-2-3\t||\t\t2000.00\t\t||\t\t\t\t||\t\t3000.00\n"
+          "2020-2-5\t||\t\t\t\t\t||\t\t1000.00\t\t||\t\t3000.00\n" +
+          "2020-2-4\t||\t\t1000.00\t\t||\t\t\t\t\t||\t\t4000.00\n" +
+          "2020-2-3\t||\t\t2000.00\t\t||\t\t\t\t\t||\t\t3000.00\n"
       );
     });
   });

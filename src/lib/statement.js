@@ -8,9 +8,9 @@ Statement.prototype.print = function (history) {
     header += `${log.date.getFullYear()}-${
       log.date.getMonth() + 1
     }-${log.date.getDate()}\t||\t\t${
-      "credit" in log ? log.credit.toFixed(2) : ""
+      "credit" in log ? log.credit.toFixed(2) : "\t"
     }\t\t||\t\t${
-      "debit" in log ? log.debit.toFixed(2) : ""
+      "debit" in log ? log.debit.toFixed(2) : "\t"
     }\t\t||\t\t${log.balance.toFixed(2)}\n`;
   });
   return header;
