@@ -1,32 +1,30 @@
 describe("Transaction.js", () => {
+  let transaction;
+  beforeEach(() => {
+    transaction = new Transaction();
+  });
+
   it("can be instantiated", () => {
-    const transaction = new Transaction();
     expect(transaction).toBeInstanceOf(Transaction);
   });
   describe("function not to be undefined for", () => {
     it("withdrawal", () => {
-      const transaction = new Transaction();
       expect(transaction.withdrawal).not.toBeUndefined();
     });
     it("deposit", () => {
-      const transaction = new Transaction();
       expect(transaction.deposit).not.toBeUndefined();
     });
   });
-  //TODO: amend test to also include balance in object.
+
   describe("withdraw function", () => {
-    let transaction;
-    beforeEach(() => {
-      transaction = new Transaction();
-    });
     it("to return object with withdrawal amount, date and balance", () => {
       const history = [
         { credit: 2000, date: new Date("2020-02-01"), balance: 2000 },
       ];
-      let date = new Date("2020-02-03");
-      expect(transaction.withdrawal(1000, "2020-02-03", history)).toEqual({
+      let dateSend = new Date("2020-02-03");
+      expect(transaction.withdrawal(1000, dateSend, history)).toEqual({
         debit: 1000,
-        date: date,
+        date: dateSend,
         balance: 1000,
       });
     });
@@ -36,9 +34,10 @@ describe("Transaction.js", () => {
         { credit: 1000, date: new Date("2020-02-02"), balance: 3000 },
         { credit: 1000, date: new Date("2020-02-03"), balance: 4000 },
       ];
-      expect(transaction.withdrawal(2000, "2020-02-04", history)).toEqual({
+      let dateSend = new Date("2020-02-04");
+      expect(transaction.withdrawal(2000, dateSend, history)).toEqual({
         debit: 2000,
-        date: new Date("2020-02-04"),
+        date: dateSend,
         balance: 2000,
       });
     });
@@ -58,28 +57,14 @@ describe("Transaction.js", () => {
         "not enough money in your account to withdraw that amount"
       );
     });
-    it("to throw error if date entered is earlier than latest date in history", () => {
-      const history = [
-        { credit: 1000, date: new Date("2020-02-01"), balance: 1000 },
-      ];
-      expect(() =>
-        transaction.withdrawal(2000, "2020-01-05", history)
-      ).toThrowError(
-        "cannot enter a date later than the latest account history"
-      );
-    });
   });
   describe("deposit function", () => {
-    let transaction;
-    beforeEach(() => {
-      transaction = new Transaction();
-    });
     it("to return object with withdrawal amount, date and balance", () => {
       const history = [];
-      let date = new Date("2020-02-03");
-      expect(transaction.deposit(1000, "2020-02-03", history)).toEqual({
+      let dateSend = new Date("2020-02-03");
+      expect(transaction.deposit(1000, dateSend, history)).toEqual({
         credit: 1000,
-        date: date,
+        date: dateSend,
         balance: 1000,
       });
     });
@@ -88,22 +73,12 @@ describe("Transaction.js", () => {
         { credit: 1000, date: new Date("2020-02-01"), balance: 1000 },
         { credit: 1000, date: new Date("2020-02-02"), balance: 2000 },
       ];
-      let date = new Date("2020-02-06");
-      expect(transaction.deposit(1000, "2020-02-06", history)).toEqual({
+      let dateSend = new Date("2020-02-06");
+      expect(transaction.deposit(1000, dateSend, history)).toEqual({
         credit: 1000,
-        date: date,
+        date: dateSend,
         balance: 3000,
       });
-    });
-    it("to throw error if date entered is earlier than latest date in history", () => {
-      const history = [
-        { credit: 1000, date: new Date("2020-02-01"), balance: 1000 },
-      ];
-      expect(() =>
-        transaction.deposit(2000, "2020-01-05", history)
-      ).toThrowError(
-        "cannot enter a date later than the latest account history"
-      );
     });
   });
 });

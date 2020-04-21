@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>18/18</span>
+                <span class='fraction'>19/19</span>
             </div>
         
             
@@ -39,14 +39,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>8/8</span>
+                <span class='fraction'>9/9</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>18/18</span>
+                <span class='fraction'>19/19</span>
             </div>
         
             
@@ -91,19 +91,11 @@
 <a name='L32'></a><a href='#L32'>32</a>
 <a name='L33'></a><a href='#L33'>33</a>
 <a name='L34'></a><a href='#L34'>34</a>
-<a name='L35'></a><a href='#L35'>35</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -112,6 +104,13 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -119,23 +118,25 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">describe("log.js", () =&gt; {
+  let log;
+  beforeEach(() =&gt; {
+    log = new Log();
+  });
   it("Log can be initialized", () =&gt; {
-    const log = new Log();
     expect(log).toBeInstanceOf(Log);
   });
 &nbsp;
   describe("function not to be undefined for", () =&gt; {
-    let log;
-    beforeEach(() =&gt; {
-      log = new Log();
-    });
     it("addToHistory", () =&gt; {
       expect(log.addToHistory).not.toBeUndefined();
     });
@@ -143,19 +144,21 @@
       expect(log.getHistory).not.toBeUndefined();
     });
   });
+&nbsp;
   describe("addToHistory function", () =&gt; {
-    it("adds log to history", () =&gt; {
-      const log = new Log();
+    it("displays 'credited to' success message on deposit", () =&gt; {
       const date = new Date("2020-03-02");
       const logToAdd = { credit: 1000, date: date, balance: 2000 };
-      log.addToHistory(logToAdd);
-      expect(log.getHistory()).toEqual([
-        {
-          credit: 1000,
-          date: date,
-          balance: 2000,
-        },
-      ]);
+      expect(log.addToHistory(logToAdd)).toEqual(
+        "successfully credited to your account"
+      );
+    });
+    it("displays 'debited from' success message on withdrawal", () =&gt; {
+      const date = new Date("2020-03-02");
+      const logToAdd = { debit: 1000, date: date, balance: 2000 };
+      expect(log.addToHistory(logToAdd)).toEqual(
+        "successfully debited from your account"
+      );
     });
   });
 });
@@ -166,7 +169,7 @@
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Tue Apr 21 2020 18:05:41 GMT+0100 (British Summer Time)
+                at Tue Apr 21 2020 20:17:12 GMT+0100 (British Summer Time)
             </div>
         </div>
         <script src="prettify.js"></script>
