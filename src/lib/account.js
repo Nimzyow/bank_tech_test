@@ -21,5 +21,5 @@ Account.prototype.log = function () {
 };
 
 Account.prototype.statement = function () {
-  this._statement.print(this._log.getHistory());
+  console.log(this._statement.print(this._log.getHistory()));
 };
