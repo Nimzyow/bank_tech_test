@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for account.js</title>
+    <title>Code coverage report for transaction.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="prettify.css" />
     <link rel="stylesheet" href="base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="index.html">All files</a> account.js</h1>
+        <h1><a href="index.html">All files</a> transaction.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>12/12</span>
-            </div>
-        
-            
-            <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
-                <span class="quiet">Branches</span>
-                <span class='fraction'>3/6</span>
+                <span class='fraction'>16/16</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>4/4</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">83.33% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>5/5</span>
+                <span class='fraction'>5/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>12/12</span>
+                <span class='fraction'>15/15</span>
             </div>
         
             
@@ -80,51 +80,54 @@
 <a name='L21'></a><a href='#L21'>21</a>
 <a name='L22'></a><a href='#L22'>22</a>
 <a name='L23'></a><a href='#L23'>23</a>
-<a name='L24'></a><a href='#L24'>24</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">let Account = function (log, transaction, statement) {
-  this._log = log || <span class="branch-1 cbranch-no" title="branch not covered" >new Log();</span>
-  this._transaction = transaction || <span class="branch-1 cbranch-no" title="branch not covered" >new Transaction();</span>
-  this._statement = statement || <span class="branch-1 cbranch-no" title="branch not covered" >new Statement();</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">let Transaction = function () {};
+&nbsp;
+Transaction.prototype.withdrawal = function (amount, date, history) {
+  this.firstDepositCheck(history);
+  let dateConverted = new Date(date);
+  history = history.sort((a, b) =&gt; b.date - a.date);
+  let calcBalance = history[0].balance - amount;
+  this.enoughMoneyInAccountCheck(calcBalance);
+  return { debit: amount, date: dateConverted, balance: calcBalance };
 };
 &nbsp;
-Account.prototype.withdraw = function (amount, date) {
-  this._log.addToHistory(this._transaction.withdrawal(amount, date));
+Transaction.prototype.deposit = <span class="fstat-no" title="function not covered" >fu</span>nction () {};
+&nbsp;
+Transaction.prototype.firstDepositCheck = function (history) {
+  if (history.length === 0) {
+    throw new Error("Please make your first deposit before withdrawing money");
+  }
 };
 &nbsp;
-Account.prototype.deposit = function (amount, date) {
-  this._log.addToHistory(
-    this._transaction.deposit(amount, date, this._log.history)
-  );
-};
-&nbsp;
-Account.prototype.log = function () {
-  return this._log;
-};
-&nbsp;
-Account.prototype.statement = function () {
-  this._statement.print();
+Transaction.prototype.enoughMoneyInAccountCheck = function (calcBalance) {
+  if (calcBalance &lt; 0) {
+    throw new Error("not enough money in your account to withdraw that amount");
+  }
 };
 &nbsp;</pre></td></tr></table></pre>
 

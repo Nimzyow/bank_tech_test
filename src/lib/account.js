@@ -9,7 +9,9 @@ Account.prototype.withdraw = function (amount, date) {
 };
 
 Account.prototype.deposit = function (amount, date) {
-  this._log.addToHistory(this._transaction.deposit(amount, date));
+  this._log.addToHistory(
+    this._transaction.deposit(amount, date, this._log.history)
+  );
 };
 
 Account.prototype.log = function () {
