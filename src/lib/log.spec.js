@@ -3,6 +3,7 @@ describe("log.js", () => {
   beforeEach(() => {
     log = new Log();
   });
+
   it("Log can be initialized", () => {
     expect(log).toBeInstanceOf(Log);
   });
@@ -32,5 +33,12 @@ describe("log.js", () => {
       );
     });
   });
-  describe("", () => {});
+  describe("getHistory function", () => {
+    it("returns history", () => {
+      const date = new Date("2020-03-02");
+      const logToAdd = { debit: 1000, date: date, balance: 2000 };
+      log.addToHistory(logToAdd);
+      expect(log.getHistory().length).toEqual(1);
+    });
+  });
 });

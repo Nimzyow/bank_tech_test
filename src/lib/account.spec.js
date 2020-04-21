@@ -10,6 +10,7 @@ describe("Account.js", () => {
     "deposit",
   ]);
   let statement = jasmine.createSpyObj("statement", ["print"]);
+
   let account;
   beforeEach(() => {
     account = new Account(log, transaction, statement);
