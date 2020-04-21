@@ -65,4 +65,4 @@ This enabled me to see what exactly had to be mocked and stubbed to allow for un
 
 A full and comprehensive TDD process was applied to this project from start to finish. Though this process takes a lot more time to complete an application like this than it normally would, it allowed me to really think about what I wanted to create to fulfill the required specifications. 
 
-Overall, this is a process that saves time in the future as it produces far less buggy applications and allows me more time to do some fun coding!
+Overall, this is a process that saves time in the future as it produces far less buggier applications and allows me more time to do some fun coding!
