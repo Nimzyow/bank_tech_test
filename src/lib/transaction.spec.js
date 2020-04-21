@@ -7,6 +7,7 @@ describe("Transaction.js", () => {
   it("can be instantiated", () => {
     expect(transaction).toBeInstanceOf(Transaction);
   });
+
   describe("function not to be undefined for", () => {
     it("withdrawal", () => {
       expect(transaction.withdrawal).not.toBeUndefined();
