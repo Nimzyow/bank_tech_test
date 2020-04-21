@@ -5,12 +5,14 @@ let Account = function (log, transaction, statement) {
 };
 
 Account.prototype.withdraw = function (amount, date) {
-  this._log.addToHistory(this._transaction.withdrawal(amount, date));
+  this._log.addToHistory(
+    this._transaction.withdrawal(amount, date, this._log.getHistory())
+  );
 };
 
 Account.prototype.deposit = function (amount, date) {
   this._log.addToHistory(
-    this._transaction.deposit(amount, date, this._log.history)
+    this._transaction.deposit(amount, date, this._log.getHistory())
   );
 };
 
@@ -19,5 +21,5 @@ Account.prototype.log = function () {
 };
 
 Account.prototype.statement = function () {
-  this._statement.print();
+  this._statement.print(this._log.getHistory());
 };

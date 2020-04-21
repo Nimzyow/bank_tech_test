@@ -1,6 +1,10 @@
 describe("Account.js", () => {
   //create spy here for rest of tests to use
-  let log = jasmine.createSpyObj("log", ["history", "addToHistory"]);
+  let log = jasmine.createSpyObj("log", [
+    "history",
+    "addToHistory",
+    "getHistory",
+  ]);
   let transaction = jasmine.createSpyObj("transaction", [
     "withdrawal",
     "deposit",
