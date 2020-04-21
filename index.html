@@ -1,10 +1,27 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,500;1,400;1,700&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
-    <title>title</title>
+    <title>Bank Tech Test</title>
   </head>
   <body>
+    <div style="display: flex; flex-direction: column; align-items: center; text-align: center; ">
+      <h1>Welcome to the bank tech test!</h1>
+      <h2>I hope you enjoy your stay</h2>
+      <h3>To run this amazing application, please open up your chrome browser and type the following:</h3>
+      <h4>To create an account called account, type:</h4>
+      <p>let account = new Account()</p>
+      <h4>To make a deposit of 1000 into your account, called account, type:</h4>
+      <p>account.deposit(1000)</p>
+      <h4>To withdraw 500 from your account, type:</h4>
+      <p>account.withdraw(500)</p>
+      <h4>You can deposit and withdraw however much you like but if you try to withdraw more than what you have, you'll get a big fat warning so be careful!!</h4>
+      <h4>to view a print out of your statement, simply type:</h4>
+      <p>account.statement()</p>
+      <h4>Thank you for using my bank :)</h4>
+    </div>
+
     <script src="src/lib/log.js"></script>
     <script src="src/lib/transaction.js"></script>
     <script src="src/lib/statement.js"></script>
