@@ -5,13 +5,13 @@ let Account = function (log, transaction, statement) {
 };
 
 Account.prototype.withdraw = function (amount) {
-  this._log.addToHistory(
+  return this._log.addToHistory(
     this._transaction.withdrawal(amount, new Date(), this._log.getHistory())
   );
 };
 
 Account.prototype.deposit = function (amount, date) {
-  this._log.addToHistory(
+  return this._log.addToHistory(
     this._transaction.deposit(amount, new Date(), this._log.getHistory())
   );
 };

@@ -1,7 +1,7 @@
 # Makers Bank Tech Test challenge
 This tech test allows us the opportunity to create a bank account that allows you to withdraw, deposit and print your bank statement.
 
-[![money](https://cdn.sovereignman.com/wp-content/uploads/2016/06/cash-piles.png)]
+![money](https://cdn.sovereignman.com/wp-content/uploads/2016/06/cash-piles.png)
 
 ## Table of content
 
